@@ -70,6 +70,12 @@ export class App extends Component {
       <>
         <Searchbar onSubmit={onSubmitForm} />
 
+        {images.length > 0 && (
+          <ImageGallery images={images} onImageClick={onImageClick} />
+        )}
+
+        {images.length > 0 && !loading && <Button loadMore={loadMore} />}
+
         {loading && (
           <Audio
             height="80"
@@ -80,13 +86,6 @@ export class App extends Component {
             wrapperStyle=""
             wrapperClass=""
           />
-        )}
-
-        {images.length > 0 && (
-          <>
-            <ImageGallery images={images} onImageClick={onImageClick} />
-            <Button loadMore={loadMore} />
-          </>
         )}
 
         {showModal && (
